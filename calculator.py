@@ -1,20 +1,24 @@
 import tkinter as tk
+from tkinter import *
 
 
 window = tk.Tk()
-window.geometry("300x200")
+window.geometry("500x300")
 
 # def button_click(number):
 #     print(number)
 
 
 buttons = [
+    ['box','','','',''],
     ['1', '2', '3', '+'],
     ['4', '5', '6', '-'],
-    ['7', '8', '9'],
-    [' ', '0', ' ', '=']
+    ['7', '8', '9', '/'],
+    [' ', '0', ' ', '='],
+     
+    
 ]
-
+trash = []
 operators = ['+','-','*','/','=']
 button = [' ','rt', 0, '**']
 num, num2 = len(operators), len(button)
@@ -51,8 +55,11 @@ def create_button_action(button_name):
             num_value = int(button_name)
         except ValueError: # you know it's one of the operators
             if button_name == "=":
-                
-                print(string)
+                string.pop()
+                print(eval(" ".join(string)))
+            if button_name == "/":
+                string.clear()
+               
             pass
 
 
@@ -63,9 +70,16 @@ for r, row in enumerate(buttons):
         if button_name == ' ':
             label = tk.Label(window,text="  #  ")
             label.grid(column=c, row=r)
+        elif button_name == '':
+            trash.append(button_name)
+        elif button_name == 'box':
+            e = Entry(window)
+           
         else:
             accessory = tk.Button(window, text="   " + str(button_name) + "   ", command=create_button_action(button_name))
             accessory.grid(column=c, row=r)
+
+
     
     #label = tk.Button(window,text="   " + str(i) + "   ",command=lambda:button_click(i))
     #label.grid(column=i, row=1)
