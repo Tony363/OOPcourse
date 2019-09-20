@@ -8,20 +8,9 @@ window.geometry("500x300")
 # def button_click(number):
 #     print(number)
 
-
-buttons = [
-    ['box','','','',''],
-    ['1', '2', '3', '+'],
-    ['4', '5', '6', '-'],
-    ['7', '8', '9', '/'],
-    [' ', '0', ' ', '='],
-     
-    
-]
-trash = []
-operators = ['+','-','*','/','=']
-button = [' ','rt', 0, '**']
-num, num2 = len(operators), len(button)
+# operators = ['+','-','*','/','=']
+# button = [' ','rt', 0, '**']
+# num, num2 = len(operators), len(button)
 
 # for i in range(num):
 #     operand = tk.Button(text=operators[i])
@@ -45,24 +34,34 @@ num, num2 = len(operators), len(button)
 #     label = tk.Button(window,text="   " + str(i) + "   ",command=lambda:button_click(i))
 #     label.grid(column=i, row=1)
 #     # label.bind("<Button-1>", one)
+    
+    #label = tk.Button(window,text="   " + str(i) + "   ",command=lambda:button_click(i))
+    #label.grid(column=i, row=1)
+    # label.bind("<Button-1>", one)
+buttons = [
+    ['box','','','',''],
+    ['1', '2', '3', '+'],
+    ['4', '5', '6', '-'],
+    ['7', '8', '9', '/'],
+    [' ', '0', ' ', '='],
+    ]
+trash = []
 string = []
 def create_button_action(button_name):
     def button_action():
-        
+        e.delete(0, END)
         string.append(button_name)
-        # print(button_name, end=' ')
+        
         try:
             num_value = int(button_name)
         except ValueError: # you know it's one of the operators
             if button_name == "=":
                 string.pop()
-                print(eval(" ".join(string)))
+                e.insert(0 ,eval(" ".join(string)))
             if button_name == "/":
                 string.clear()
-               
             pass
-
-
+        e.insert(0,button_name)      
     return button_action
 
 for r, row in enumerate(buttons):
@@ -73,16 +72,15 @@ for r, row in enumerate(buttons):
         elif button_name == '':
             trash.append(button_name)
         elif button_name == 'box':
-            e = Entry(window)
-           
+            trash.append(button_name)
+        #     # e = Entry(window)
+        #     # e.grid(column=c, row=r)
+   
         else:
-            accessory = tk.Button(window, text="   " + str(button_name) + "   ", command=create_button_action(button_name))
+            accessory = tk.Button(window, text=button_name, padx=55, pady=20, command=create_button_action(button_name))
             accessory.grid(column=c, row=r)
 
-
-    
-    #label = tk.Button(window,text="   " + str(i) + "   ",command=lambda:button_click(i))
-    #label.grid(column=i, row=1)
-    # label.bind("<Button-1>", one)
+e = Entry(window)
+e.grid(column=1, row=6)
 
 window.mainloop()
