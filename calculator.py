@@ -3,7 +3,7 @@ from tkinter import *
 
 
 window = tk.Tk()
-window.geometry("500x300")
+window.geometry("900x400")
 
 # def button_click(number):
 #     print(number)
@@ -39,11 +39,11 @@ window.geometry("500x300")
     #label.grid(column=i, row=1)
     # label.bind("<Button-1>", one)
 buttons = [
-    ['box','','','',''],
+    ['box','','','',],
     ['1', '2', '3', '+'],
-    ['4', '5', '6', '-'],
-    ['7', '8', '9', '/'],
-    [' ', '0', ' ', '='],
+    ['4', '5', '6', '-',],
+    ['7', '8', '9', '*',],
+    ['cl', '0', '**','/'],
     ]
 trash = []
 string = []
@@ -57,8 +57,8 @@ def create_button_action(button_name):
         except ValueError: # you know it's one of the operators
             if button_name == "=":
                 string.pop()
-                e.insert(0 ,eval(" ".join(string)))
-            if button_name == "/":
+                e.insert(0 ,eval("".join(string)))
+            if button_name == "clear":
                 string.clear()
             pass
         e.insert(0,button_name)      
@@ -73,14 +73,14 @@ for r, row in enumerate(buttons):
             trash.append(button_name)
         elif button_name == 'box':
             trash.append(button_name)
-        #     # e = Entry(window)
-        #     # e.grid(column=c, row=r)
+            # e = Entry(window)
+            # e.grid(column=c, row=r)
    
         else:
-            accessory = tk.Button(window, text=button_name, padx=55, pady=20, command=create_button_action(button_name))
+            accessory = tk.Button(window, text=button_name, padx=60, pady=20, command=create_button_action(button_name))
             accessory.grid(column=c, row=r)
 
-e = Entry(window)
-e.grid(column=1, row=6)
+e = Entry(window, width=35, borderwidth=5)
+e.grid(column=0, row=0, columnspan=5)
 
 window.mainloop()
