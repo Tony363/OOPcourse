@@ -7,23 +7,34 @@ from tkinter import *
 window = tk.Tk()
 window.geometry("400x200")
 
-e = Entry(window, width=35, borderwidth=5)
-e.grid(column=0, row=0, columnspan=3)
-entry = tk.Entry()
-entryString = entry.get()
+
+
+global Button_Count
+Button_Count = 0
+
+entry_id = StringVar() # create an id for your entry, this helps getting the text
+entry = tk.Entry(window, textvariable=entry_id, justify=RIGHT)
+entry.grid(row=0, column=1, sticky=E)
+
+
+
+
 
 def addBookmark(event):
-    Bookmark = tk.Button(window,text="{}".format(entryString))
-    Bookmark.grid(column=0,row=1)
-    # def gridButton(event):
-    #     column = 0
-    #     for i in 
-
-
-
-
-
-
+    # get the text from entry
+    
+    Bookmark = StringVar()
+    invisible = tk.Button(window, text='', textvariable=Bookmark)
+    invisible.grid(row=1, column=1, sticky=W)
+    reply = Bookmark.set(format(entry_id)) # format the text on the invisible label you created above
+		
+    def clickcount():
+        global Button_Count
+        Button_Count += 1
+    
+    # Bookmark.grid(column=0,row=Button_Count)
+    return reply
+ 
 
 add_bookmark = tk.Button(window,text="Add Bookmark")
 add_bookmark.grid(column=5,row=0)
