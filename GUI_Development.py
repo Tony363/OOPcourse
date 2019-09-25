@@ -2,6 +2,12 @@ import tkinter as tk
 import webbrowser
 # from tkinter import ttk
 
+bookmarks = {
+    "CP" : "https://medium.com/cleverprogrammer",
+    "abdallah" : "https://medium.com/@selfengineeredd",
+    "stackoverflow":"www.stackoverflow.com"
+}
+
 def doorbell(event):
     print("you rang the doorbell!")
 
@@ -9,10 +15,10 @@ def fuckyou(event):
     print("fuckyou")
 
 def CP(event):
-    webbrowser.open_new_tab("https://medium.com/cleverprogrammer")
+    webbrowser.open_new_tab(bookmarks["CP"])
 
 def hey_abdallah(event):
-    webbrowser.open_new_tab("https://medium.com/@selfengineeredd")
+    webbrowser.open_new_tab(bookmarks["abdallah"])
 
 window = tk.Tk()
 window.geometry("300x200")
@@ -29,9 +35,9 @@ button2 = tk.Button(window, text="hey")
 button2.grid(column=1, row=1)
 button2.bind("<Button-1>", fuckyou)
 
-button3 = tk.Button(window,text="google.com")
+button3 = tk.Button(window,text="clever qazi")
 button3.grid(column=2, row=1)
-button3.bind("<Button-1>", CP)
+button3.bind("<Button-1>", CP, "CP")
 
 blogpost = tk.Label(text="Self engineered")
 blogpost.grid(column=0,row=2)

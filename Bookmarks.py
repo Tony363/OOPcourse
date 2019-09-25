@@ -3,6 +3,7 @@ import webbrowser
 from tkinter import *
 # from tkinter import ttk
 
+
 window = tk.Tk()
 window.geometry("400x200")
 
@@ -20,7 +21,7 @@ def addBookmark(event):
     Bookmark = StringVar()
     invisible = tk.Button(window, text='' ,textvariable=Bookmark)
     invisible.grid(row=1, column=1, sticky=W)
-  
+    webbrowser.open_new_tab("www.google.com")
     # text = entry_id.get() 
     # reply = Bookmark.set(format(text)) 
     return reply
