@@ -43,7 +43,7 @@ buttons = [
     ['1', '2', '3', '+'],
     ['4', '5', '6', '-',],
     ['7', '8', '9', '*',],
-    ['cl', '0', '**','/'],
+    ['=', '0', '**','/'],
     ]
 trash = []
 string = []
@@ -58,7 +58,7 @@ def create_button_action(button_name):
             if button_name == "=":
                 string.pop()
                 e.insert(0 ,eval("".join(string)))
-            if button_name == "clear":
+            if button_name == "/":
                 string.clear()
             pass
         e.insert(0,button_name)      

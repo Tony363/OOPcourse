@@ -2,15 +2,16 @@ from tkinter import *
 from tkinter import ttk # also import the themed tkinter for good looking widgets (not obligatory)
  
 class Widget:
-	def __init__(self):
+	def __init__(self,):
 		window = Tk()
 		window.title("Repeat")
-		window.resizable(0, 0) # prohibit resizing the window
+		# window.resizable(0, 0) # prohibit resizing the window
 	
 		text = ttk.Label(window, text='Text:')
 		text.grid(row=0, column=0, sticky=W)
 		label_result = ttk.Label(window, text='Result:')
 		label_result.grid(row=1, column=0, sticky=W)
+        
 		self.Button = StringVar() # create an id for the invisible label where will be displayed the text in the box
 		invisible_label = ttk.Button(window, text='', textvariable=self.Button) # create the invisible label
 		invisible_label.grid(row=1, column=1, sticky=E)
