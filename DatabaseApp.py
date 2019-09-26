@@ -12,7 +12,7 @@ conn = sqlite3.connect('bookmarks.db')
 cursor = conn.cursor()
 
 #create table
-cursor.execute("""CREATE TABLE bookmarks (textbox text)""")
+#cursor.execute("""CREATE TABLE bookmarks (textbox text)""")
 
 def links():
     # create a datase or connect to one
@@ -26,8 +26,17 @@ def links():
     marks = cursor.fetchall()
     print(marks)
 
-    for mark in marks[0]:
-        print_marks += mark
+
+    print_marks = ''
+    for mark,r in enumerate(marks,6):
+        
+        
+        print_marks += str(mark) + "\n"
+
+        extension = Button(root, text=print_marks)
+        extension.grid(row=r, column=0, columnspan=3)
+
+        print_marks = print_marks - str(mark) + "\n"
 
 
     # Commit Changes
