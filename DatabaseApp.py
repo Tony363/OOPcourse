@@ -39,11 +39,13 @@ def update():
     # close connection
     conn.close()
 
+    editor.destroy()
+
     
 
 #create function to edit a record
 def edit():
-    
+    global editor
     editor = Tk()
     editor.title("Update!")
     editor.geometry("400x400")
@@ -116,7 +118,7 @@ def links():
             webbrowser.open_new_tab(mark)
 
         extension = Button(root, text= str(i) + " " + mark, command=openchrome)
-        extension.delete(0,END)
+        #extension.delete(0,END)
         extension.grid(row=i+4, column=0, columnspan=3)
     
 
