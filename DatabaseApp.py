@@ -69,8 +69,9 @@ def edit():
     cursor = conn.cursor()
 
     record_id = selectbox.get()
+    
     #Query database
-    cursor.execute("SELECT * FROM bookmarks WHERe oid = " + record_id)
+    cursor.execute("SELECT * FROM bookmarks WHERE oid = " + record_id)
     marks = cursor.fetchall()
     print(marks)
 
