@@ -1,7 +1,8 @@
 import datetime
 import tkinter as tk
+from PIL import Image, ImageTk
 from datetime import date
-from dateutil.relativedelta import relativedelta
+# from dateutil.relativedelta import relativedelta
 
 # rdelta = relativedelta(date.today(),datetime.date(1996,5,6))
 # print('Age in years: ', rdelta.years)
@@ -19,38 +20,39 @@ window.geometry("400x400")
 window.title("Age Calculator APP")
 
 #adding labels
-year_label = tk.Label(text="Year")
+year_label = tk.Label(text="Year:")
 year_label.grid(column=0, row=1)
 
-month_label = tk.Label(text="Month")
+month_label = tk.Label(text="Month:")
 month_label.grid(column=0, row=2)
 
-day_label = tk.Label(text="Day")
+day_label = tk.Label(text="Day:")
 day_label.grid(column=0, row=3)
 
-year_entry = tk.Entry()
+year_entry = tk.Entry(width=28)
 year_entry.grid(column=1, row=1)
 
-month_entry = tk.Entry()
+month_entry = tk.Entry(width=28)
 month_entry.grid(column=1, row=2)
 
-day_entry = tk.Entry()
+day_entry = tk.Entry(width=28)
 day_entry.grid(column=1, row=3)
 
 def calculate_age():
-    print(year_entry.get())
-    print(month_entry.get())
-    print(day_entry.get())
+    # print(year_entry.get())
+    # print(month_entry.get())
+    # print(day_entry.get())
     print("Button was clicked!")
-    Tony = Person("Tony", datetime.date(
+    person = Person("Tony", datetime.date(
                                         int(year_entry.get()),
                                         int(month_entry.get()),
                                         int(day_entry.get()))
                                         )
-    print(Tony.Age())
-    text_answer = tk.Text(master=window, height=10, width=30)
+    # print(Tony.Age())
+    text_answer = tk.Text(master=window, height=10, width=25)
     text_answer.grid(column=1, row=5)
-    text_answer.insert(1,Tony.Age())
+    answer_text = "{name} is {age} years old".format(name=person.name, age=person.Age())
+    text_answer.insert(tk.END, "{}!".format(answer_text))
 
 calculate_button = tk.Button(window,text='Calculate Now', command=calculate_age)
 calculate_button.grid(column=1, row=4)
@@ -71,6 +73,11 @@ class Person:
     def __str__(self):
         return "{}".format(age)
 
+image = Image.open('2979-200.png')
+image.thumbnail((100,100), Image.ANTIALIAS)
+photo = ImageTk.PhotoImage(image)
+label_image = tk.Label(image=photo)
+label_image.grid(column=1, row=0)
 # trial = date.today() - datetime.date(1996,5,6)
 # print(trial)
 
