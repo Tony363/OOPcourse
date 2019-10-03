@@ -2,7 +2,7 @@ import datetime
 import tkinter as tk
 from PIL import Image, ImageTk
 from datetime import date
-# from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta
 
 # rdelta = relativedelta(date.today(),datetime.date(1996,5,6))
 # print('Age in years: ', rdelta.years)
