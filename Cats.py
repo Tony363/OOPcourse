@@ -10,6 +10,8 @@ class Cats:
                 raise StopIteration
             self.cur += 1
             return self.cats[i]
+        def __str__(self):
+            return "{}".format(self.cats[i])
 
     def __init__(self):
         self.cats = []
@@ -21,7 +23,9 @@ class Cats:
     def __iter__(self):
         return Cats._cat_iter(self.cats)
 
+    def __str__(self):
+        return "{}:{}".format(self.cats, self.Cats._cat_iter(self.cats))
+
 a = Cats()
 a.add("joe").add("jack").add('fink').add('dink')
-for c in a:
-    print(c)                            
+print(a)                          
