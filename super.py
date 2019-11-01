@@ -1,6 +1,6 @@
 class Rectangle:
     def __init__(self, length, width):
-        self.length = length*100
+        self.length = length
         self.width = width
 
     def area(self):
@@ -10,10 +10,12 @@ class Rectangle:
         return 2 * self.length + 2 * self.width
 
 class Square(Rectangle):
-    def __init__(self, length):
-        super(Square,self).__init__(length,length+1)
-        print(self.width)
-        length = length + 4
+    def __init__(self, width):
+        super(Square,self).__init__(width,width)
+        # print(self.width)
+        # print(self.length)
+        # print(self.length)
+        # length = length + 4
 
 
 class Square2():
@@ -25,8 +27,6 @@ class Square2():
 rec = Rectangle(16,4)
 print(rec.area())
 print(rec.perimeter())
-Square(4)
-
 
 box = Square(5)
 print(box.area())
@@ -35,22 +35,20 @@ print(box.perimeter())
 class Column(Rectangle):
     def __init__(self,length, width):
         super(Column,self).__init__(length,width)
-        Area = super(Column,self).area()
+        self.Area = super(Column,self).area()
 
     def surface_area(self):
-         
-        return super(Column,self).area() * 6
+        
+        return self.Area * 6
 
     def volume(self):
        
-        return super(Column,self).area() * self.length
+        return self.Area * self.length
     
-    # def __int(self):
-    #     return 
-
-boxy = Column(16,4)
-print(boxy.surface_area())
-print(boxy.volume())
+    
+pillar = Column(16,4)
+print(pillar.surface_area())
+print(pillar.volume())
 
 class A:
     def test(self):
@@ -92,8 +90,11 @@ class B1(A1):
 
     def multiply(self,i):
         self.i = 2 * i
-obj1 = B1()
-print(obj1)
+
+    def __repr__(self):
+        return '{}'.format(self.__init__())
+# obj1 = B1()
+print( B1())
 
 class stud:
     def __init__(self, roll_no,grade):
@@ -103,5 +104,5 @@ class stud:
         print("Roll no:", self.roll_no, ",Grade:", self.grade)
 
 stud1 = stud(34,"S")
-stud1.age=7
-print(hasattr(stud1,"age"))
+stud1.Tony=7
+print(hasattr(stud1,"Tony"))
