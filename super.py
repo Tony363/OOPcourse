@@ -33,8 +33,8 @@ print(box.area())
 print(box.perimeter())
 
 class Column(Rectangle):
-    def __init__(self,length, width):
-        super(Column,self).__init__(length,width)
+    def __init__(self,Tony, Siu):
+        super(Column,self).__init__(Tony, Siu)
         self.Area = super(Column,self).area()
 
     def surface_area(self):
@@ -106,3 +106,32 @@ class stud:
 stud1 = stud(34,"S")
 stud1.Tony=7
 print(hasattr(stud1,"Tony"))
+
+class Tony:
+    def __init__(self, name):
+        self.name = name
+
+    def lastname(self):
+        self.age = 23
+
+Tony('Tony')
+Tony.games = 'total war'
+print(hasattr(Tony,"Tony"))
+
+class test:
+    def __init__(self):
+        self.variable = 'OLD'
+        self.Change(self.variable)
+    def Change(self, var):
+        var = 'NEW'
+
+    def __str__(self):
+        return "{}".format(self.__init__())
+
+number = 9
+test = test()
+# print(test.Change(number))
+print(test)
+
+
+
